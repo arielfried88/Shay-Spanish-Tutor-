@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  direction: rtl;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-heebo), 'Arial', sans-serif;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Prevent double-tap zoom on mobile */
+button, a {
+  touch-action: manipulation;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.2); border-radius: 3px; }
