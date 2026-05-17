@@ -69,7 +69,6 @@ export default function MultipleChoice({ words, allWords, questionIndex, onAnswe
               onClick={() => handleSelect(opt)}
               className={`rounded-2xl p-4 text-center transition-all duration-200 active:scale-95 ${style}`}
             >
-              <div className="text-2xl mb-1">{opt.emoji}</div>
               {/* Pronunciation — the main label Shay reads */}
               <div className="text-xl font-bold text-gray-800 leading-tight">
                 {opt.audioHint ?? opt.hebrew}

@@ -1,5 +1,5 @@
 'use client'
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { VocabWord } from '@/types/content'
 import SpeakButton from '@/components/ui/SpeakButton'
 
@@ -13,15 +13,13 @@ export default function FlashcardMatch({ words, questionIndex, onAnswer }: Props
   const word = words[questionIndex % words.length]
   const [flipped, setFlipped] = useState(false)
 
-  useEffect(() => {
-    setFlipped(false)
-  }, [questionIndex])
-
   return (
     <div className="flex flex-col items-center gap-6 w-full max-w-md mx-auto">
       <p className="text-white/80 text-center">לחצי על הכרטיס כדי לגלות איך אומרים בספרדית!</p>
 
+      {/* key=word.id forces a full remount when the word changes — flipped resets to false instantly, no peek */}
       <div
+        key={word.id}
         className="w-72 h-72 cursor-pointer"
         style={{ perspective: '800px' }}
         onClick={() => setFlipped(true)}

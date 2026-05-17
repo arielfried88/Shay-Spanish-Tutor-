@@ -1,12 +1,12 @@
 import { VocabWord } from '@/types/content'
 
 export const sportsWords: VocabWord[] = [
-  { id: 'sport_futbol',      spanish: 'fútbol',      hebrew: 'כדורגל',    emoji: '⚽', audioHint: 'פוטבול' },
-  { id: 'sport_baloncesto',  spanish: 'baloncesto',  hebrew: 'כדורסל',    emoji: '🏀', audioHint: 'בלון-סס-טו' },
-  { id: 'sport_natacion',    spanish: 'natación',    hebrew: 'שחייה',     emoji: '🏊', audioHint: 'נ-ט-סיון' },
-  { id: 'sport_tenis',       spanish: 'tenis',       hebrew: 'טניס',      emoji: '🎾', audioHint: 'טניס' },
-  { id: 'sport_ciclismo',    spanish: 'ciclismo',    hebrew: 'רכיבה על אופניים', emoji: '🚴', audioHint: 'סיק-ליסמו' },
-  { id: 'sport_gimnasia',    spanish: 'gimnasia',    hebrew: 'התעמלות',   emoji: '🤸', audioHint: 'חימ-נסיה' },
-  { id: 'sport_beisbol',     spanish: 'béisbol',     hebrew: 'בייסבול',   emoji: '⚾', audioHint: 'ביסבול' },
-  { id: 'sport_voleibol',    spanish: 'voleibol',    hebrew: 'כדורעף',    emoji: '🏐', audioHint: 'ב-ולי-בול' },
+  { id: 'sport_futbol',     spanish: 'fútbol',     hebrew: 'כַּדּוּרֶגֶל',             emoji: '⚽', audioHint: 'פוּט-בּוֹל' },
+  { id: 'sport_baloncesto', spanish: 'baloncesto', hebrew: 'כַּדּוּרְסַל',             emoji: '🏀', audioHint: 'בָּ-לוֹן-סֶס-טוֹ' },
+  { id: 'sport_natacion',   spanish: 'natación',   hebrew: 'שְׁחִיָּה',                emoji: '🏊', audioHint: 'נַ-טַ-סְיוֹן' },
+  { id: 'sport_tenis',      spanish: 'tenis',      hebrew: 'טֶנִּיס',                  emoji: '🎾', audioHint: 'טֶ-נִיס' },
+  { id: 'sport_ciclismo',   spanish: 'ciclismo',   hebrew: 'רְכִיבָה עַל אוֹפַנַּיִם', emoji: '🚴', audioHint: 'סִיק-לִיס-מוֹ' },
+  { id: 'sport_gimnasia',   spanish: 'gimnasia',   hebrew: 'הִתְעַמְּלוּת',            emoji: '🤸', audioHint: 'חִים-נַ-סְיַה' },
+  { id: 'sport_beisbol',    spanish: 'béisbol',    hebrew: 'בֵּיסְבּוֹל',              emoji: '⚾', audioHint: 'בֵּיס-בּוֹל' },
+  { id: 'sport_voleibol',   spanish: 'voleibol',   hebrew: 'כַּדּוּרְעָף',             emoji: '🏐', audioHint: 'בוֹ-לֵי-בּוֹל' },
 ]

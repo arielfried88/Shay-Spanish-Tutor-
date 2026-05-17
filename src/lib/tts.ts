@@ -19,37 +19,30 @@ class TTSService {
     loadVoices()
     window.speechSynthesis.onvoiceschanged = loadVoices
 
-    // Chrome auto-pauses speechSynthesis after ~15s of inactivity — keep it awake
+    // Prevent Chrome from auto-pausing after ~15s of inactivity
     this.keepAlive = setInterval(() => {
-      if (!window.speechSynthesis.speaking) window.speechSynthesis.resume()
+      window.speechSynthesis.resume()
     }, 8000)
-
-    // Pre-warm: speak a silent utterance so the engine is ready immediately
-    const warmup = new SpeechSynthesisUtterance(' ')
-    warmup.volume = 0
-    warmup.lang = 'es-ES'
-    window.speechSynthesis.speak(warmup)
   }
 
   speak(text: string, rate = 0.75): Promise<void> {
     if (typeof window === 'undefined') return Promise.resolve()
     return new Promise(resolve => {
-      // Wake Chrome up before speaking — this eliminates the delay
+      // resume() is the key fix — Chrome pauses the engine silently
       window.speechSynthesis.resume()
+      window.speechSynthesis.cancel()
 
-      // Only cancel if something is already playing
-      if (window.speechSynthesis.speaking || window.speechSynthesis.pending) {
-        window.speechSynthesis.cancel()
-      }
-
-      const utterance = new SpeechSynthesisUtterance(text)
-      if (this.spanishVoice) utterance.voice = this.spanishVoice
-      utterance.lang = 'es-ES'
-      utterance.rate = rate
-      utterance.pitch = 1.1
-      utterance.onend = () => resolve()
-      utterance.onerror = () => resolve() // non-fatal — just continue
-      window.speechSynthesis.speak(utterance)
+      // Small yield so cancel() completes before we enqueue the new utterance
+      setTimeout(() => {
+        const utterance = new SpeechSynthesisUtterance(text)
+        if (this.spanishVoice) utterance.voice = this.spanishVoice
+        utterance.lang = 'es-ES'
+        utterance.rate = rate
+        utterance.pitch = 1.1
+        utterance.onend = () => resolve()
+        utterance.onerror = () => resolve()
+        window.speechSynthesis.speak(utterance)
+      }, 50)
     })
   }
 
@@ -59,3 +52,9 @@ class TTSService {
 }
 
 export const tts = new TTSService()
+
+// Auto-init as soon as the module is imported in the browser —
+// this runs well before any user interaction, so voices are ready instantly
+if (typeof window !== 'undefined') {
+  tts.init()
+}
