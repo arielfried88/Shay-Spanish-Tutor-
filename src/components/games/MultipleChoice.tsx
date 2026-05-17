@@ -42,34 +42,40 @@ export default function MultipleChoice({ words, allWords, questionIndex, onAnswe
 
   return (
     <div className="flex flex-col items-center gap-6 w-full max-w-md mx-auto">
+      {/* Question card */}
       <div className="bg-white rounded-3xl shadow-xl p-8 text-center w-full">
         <p className="text-gray-500 text-sm mb-2">איך אומרים זאת בספרדית?</p>
         <div className="text-6xl mb-3">{word.emoji}</div>
-        <div className="text-3xl font-bold text-gray-800 mb-2">{word.hebrew}</div>
-        {word.audioHint && <p className="text-gray-400 text-sm">הגייה: {word.audioHint}</p>}
+        <div className="text-3xl font-bold text-gray-800 mb-1">{word.hebrew}</div>
         <div className="mt-4 flex justify-center">
           <SpeakButton text={word.spanish} size="lg" />
         </div>
       </div>
 
+      {/* Answer options */}
       <div className="grid grid-cols-2 gap-3 w-full">
         {options.map(opt => {
           const isSelected = selected === opt.id
           const isCorrect = opt.id === word.id
-          let style = 'bg-white border-2 border-gray-200 text-gray-800 hover:border-indigo-400 hover:bg-indigo-50'
+          let style = 'bg-white border-2 border-gray-200 hover:border-indigo-400 hover:bg-indigo-50'
           if (selected) {
-            if (isCorrect) style = 'bg-emerald-100 border-2 border-emerald-500 text-emerald-800'
-            else if (isSelected) style = 'bg-rose-100 border-2 border-rose-400 text-rose-800 animate-shake'
-            else style = 'bg-white border-2 border-gray-100 text-gray-400 opacity-60'
+            if (isCorrect) style = 'bg-emerald-100 border-2 border-emerald-500'
+            else if (isSelected) style = 'bg-rose-100 border-2 border-rose-400 animate-shake'
+            else style = 'bg-white border-2 border-gray-100 opacity-50'
           }
           return (
             <button
               key={opt.id}
               onClick={() => handleSelect(opt)}
-              className={`rounded-2xl p-4 text-center font-bold text-lg transition-all duration-200 active:scale-95 ${style}`}
+              className={`rounded-2xl p-4 text-center transition-all duration-200 active:scale-95 ${style}`}
             >
               <div className="text-2xl mb-1">{opt.emoji}</div>
-              <div>{opt.spanish}</div>
+              {/* Pronunciation — the main label Shay reads */}
+              <div className="text-xl font-bold text-gray-800 leading-tight">
+                {opt.audioHint ?? opt.hebrew}
+              </div>
+              {/* Spanish spelling — small and secondary */}
+              <div className="text-xs text-gray-400 mt-1">{opt.spanish}</div>
             </button>
           )
         })}
