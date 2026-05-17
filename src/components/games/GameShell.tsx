@@ -2,9 +2,9 @@
 import { useState, useEffect, useCallback } from 'react'
 import { Lesson } from '@/types/content'
 import { getTopicById, getWordById } from '@/content/topics'
-import { calcStars, calcXP } from '@/lib/scoring'
+import { calcStars, calcXP, getLevelForXP } from '@/lib/scoring'
 import { useProgress } from '@/hooks/useProgress'
-import { useAIFeedback } from '@/hooks/useAIFeedback'
+import { getCompleteFeedback } from '@/lib/feedback'
 import StarRating from '@/components/ui/StarRating'
 import ProgressBar from '@/components/ui/ProgressBar'
 import MultipleChoice from './MultipleChoice'
@@ -22,8 +22,7 @@ interface Props {
 
 export default function GameShell({ lesson }: Props) {
   const router = useRouter()
-  const { completeLesson, progress, isTopicUnlocked } = useProgress()
-  const { message: aiFeedback, loading: aiLoading, fetchFeedback } = useAIFeedback()
+  const { completeLesson, progress } = useProgress()
 
   const topic = getTopicById(lesson.topicId)!
   const words = lesson.wordPool.map(id => getWordById(id)!).filter(Boolean)
@@ -40,6 +39,7 @@ export default function GameShell({ lesson }: Props) {
   const [leveledUp, setLeveledUp] = useState(false)
   const [newBadges, setNewBadges] = useState<string[]>([])
   const [shuffledWords, setShuffledWords] = useState<typeof words>([])
+  const [completeFeedback, setCompleteFeedback] = useState('')
 
   useEffect(() => {
     setShuffledWords([...words].sort(() => Math.random() - 0.5))
@@ -69,13 +69,12 @@ export default function GameShell({ lesson }: Props) {
       const { leveledUp: lu, newBadges: nb } = completeLesson(lesson.topicId, result)
       setLeveledUp(lu)
       setNewBadges(nb)
+      setCompleteFeedback(getCompleteFeedback(stars))
       setDone(true)
-
-      fetchFeedback({ word: words[0]?.spanish ?? '', userAnswer: '', correct: true, sessionScore: score, totalQuestions: QUESTIONS })
     } else {
       setQuestionIndex(i => i + 1)
     }
-  }, [correctCount, streak, questionIndex, QUESTIONS, lesson, progress, completeLesson, fetchFeedback, words])
+  }, [correctCount, streak, questionIndex, QUESTIONS, lesson, progress, completeLesson, words])
 
   const score = done ? Math.round((correctCount / QUESTIONS) * 100) : 0
   const stars = calcStars(score)
@@ -83,7 +82,7 @@ export default function GameShell({ lesson }: Props) {
   if (done) {
     return (
       <>
-        {leveledUp && <LevelUpModal level={progress.level} levelName={progress.level.toString()} onClose={() => setLeveledUp(false)} />}
+        {leveledUp && <LevelUpModal level={progress.level} levelName={getLevelForXP(progress.totalXP).name} onClose={() => setLeveledUp(false)} />}
         <div className={`min-h-screen bg-gradient-to-br ${topic.bgGradient} flex flex-col items-center justify-center p-6 gap-6`}>
           <div className="bg-white rounded-3xl shadow-2xl p-8 text-center max-w-md w-full animate-bounce-in">
             <div className="text-6xl mb-4">🎉</div>
@@ -102,12 +101,11 @@ export default function GameShell({ lesson }: Props) {
               </div>
             )}
 
-            {aiFeedback && !aiLoading && (
+            {completeFeedback && (
               <div className="bg-indigo-50 rounded-2xl p-4 mb-4 text-indigo-700 font-medium text-lg">
-                💬 {aiFeedback}
+                {completeFeedback}
               </div>
             )}
-            {aiLoading && <div className="text-gray-400 text-sm mb-4 animate-pulse">המורה מכינה הודעה...</div>}
 
             <div className="flex flex-col gap-3 mt-4">
               <button
