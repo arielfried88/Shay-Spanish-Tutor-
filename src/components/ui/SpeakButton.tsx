@@ -17,7 +17,7 @@ export default function SpeakButton({ text, rate, size = 'md', className = '', a
   return (
     <button
       onClick={() => speak(text, rate)}
-      className={`rounded-full bg-indigo-100 hover:bg-indigo-200 transition-all duration-150 active:scale-95 ${
+      className={`rounded-full bg-indigo-100 hover:bg-indigo-200 transition-all duration-150 active:scale-95 flex items-center justify-center min-w-11 min-h-11 ${
         isSpeaking ? 'animate-pulse-speak bg-indigo-200' : ''
       } ${sizes[size]} ${className}`}
       title="שמעי את המילה בספרדית"
