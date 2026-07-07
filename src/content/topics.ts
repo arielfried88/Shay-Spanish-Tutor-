@@ -31,7 +31,7 @@ export const TOPICS: Topic[] = [
     bgGradient: 'from-pink-300 to-rose-400',
     words: colorsWords,
     unlockAfterXP: 0,
-    lessonIds: ['colors_1', 'colors_2', 'colors_3'],
+    lessonIds: ['colors_1', 'colors_2', 'colors_3', 'colors_4'],
   },
   {
     id: 'numbers',
@@ -42,7 +42,7 @@ export const TOPICS: Topic[] = [
     bgGradient: 'from-blue-300 to-indigo-400',
     words: numbersWords,
     unlockAfterXP: 100,
-    lessonIds: ['numbers_1', 'numbers_2', 'numbers_3'],
+    lessonIds: ['numbers_1', 'numbers_2', 'numbers_3', 'numbers_4'],
   },
   {
     id: 'animals',
@@ -64,7 +64,7 @@ export const TOPICS: Topic[] = [
     bgGradient: 'from-purple-300 to-violet-400',
     words: bodyPartsWords,
     unlockAfterXP: 250,
-    lessonIds: ['body_1', 'body_2', 'body_3'],
+    lessonIds: ['body_1', 'body_2', 'body_3', 'body_4'],
   },
   {
     id: 'food',
@@ -86,7 +86,7 @@ export const TOPICS: Topic[] = [
     bgGradient: 'from-teal-300 to-cyan-400',
     words: familyWords,
     unlockAfterXP: 450,
-    lessonIds: ['family_1', 'family_2', 'family_3'],
+    lessonIds: ['family_1', 'family_2', 'family_3', 'family_4'],
   },
   {
     id: 'school',

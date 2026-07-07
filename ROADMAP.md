@@ -7,7 +7,7 @@ A Spanish-vocabulary app built just for Shay (age 7). She's a Hebrew speaker, so
 ## Where things stand today (2026-07-07)
 
 - **10 topics** (greetings, colors, numbers, animals, body parts, food, family, school, actions, sports), unlocking progressively by XP, **30 lessons** total (3 per topic).
-- **5 game types**: multiple choice, flashcard match, word-image match, audio riddle, mystery mission (typed-answer riddle). A 6th component, fill-in-blank, exists in code but isn't wired into any lesson yet.
+- **6 game types**: multiple choice, flashcard match, word-image match, audio riddle, mystery mission (typed-answer riddle), and fill-in-blank (letter-tile spelling).
 - **XP/leveling + badges** system (`src/lib/achievements.ts`), a **parent dashboard** (PIN-gated) with progress charts and weak-topic detection.
 - Spanish **text-to-speech** on every word via the browser's built-in speech engine — no external API needed.
 - **Live and in daily use.**
@@ -15,6 +15,7 @@ A Spanish-vocabulary app built just for Shay (age 7). She's a Hebrew speaker, so
 ### Just shipped this session
 - **Mobile/tablet check-up.** Since Shay plays on phones and tablets a lot, this was made priority #1. Tested all 5 game types at iPhone viewport size (375×812): no horizontal overflow anywhere, no console/page errors, touch targets are comfortably sized, the typed-answer screen (Mystery Mission) handles the on-screen keyboard cleanly. Bumped `SpeakButton`'s small size up to a guaranteed 44px tap target (`src/components/ui/SpeakButton.tsx`) since it measured a bit under the touch-target guideline before. **The one thing that could *not* be verified in this sandbox: real iOS Safari behavior for the speak button.** `src/lib/tts.ts` defers the actual `speechSynthesis.speak()` call by 50ms after `cancel()` (a deliberate fix from an earlier session for a Chrome timing bug — see commit `e6335c8`). iOS Safari has a known history of being strict about `speak()` needing to fire in direct response to a user gesture, and a deferred call is a plausible (not confirmed) way that could silently fail specifically on iPhone/iPad. **Next step: have Shay (or you) tap the 🔊 button on an actual iPhone/iPad and confirm sound plays.** If it doesn't, the fix is in `tts.ts`'s cancel→speak sequencing.
 - **Deleted dead code**: the leftover Anthropic/Claude API integration (`src/lib/claude.ts`, `/api/ai-feedback`, `/api/mystery-mission` routes, `useAIFeedback` hook, `src/types/api.ts`) had been unused since riddles moved to a built-in library (commit `214bf85`) — confirmed nothing referenced it, removed it along with the `@anthropic-ai/sdk` dependency.
+- **Wired up Fill-in-Blank**: it was a fully-built letter-tile spelling game that no lesson ever referenced. Added it as a 4th lesson to colors, numbers, body parts, and family (topics with short, single-word vocab that works well as spelling tiles) — `colors_4`, `numbers_4`, `body_4`, `family_4` in `src/content/lessons.ts`. Verified end-to-end on an emulated mobile viewport: hint reveal, tile placement, submit, and auto-advance to the next question all work.
 
 ## The plan: three horizons, in order
 
@@ -35,7 +36,7 @@ Define what "done" actually means content-wise — target topic list, whether gr
 ## Next up (pull from here next session)
 
 1. **Verify TTS on a real iPhone/iPad** — the one open item from this session's mobile work (see above).
-2. Wire the unused `FillInBlank` game type into at least one lesson, or decide it's not needed and remove it.
+2. Consider adding Fill-in-Blank lessons to the remaining topics (greetings, animals, food, school, actions, sports) now that it's proven out — some of those have multi-word or accented vocab that needs picking a clean word subset first.
 3. Pick the first Horizon 2 feature to prototype.
 
 ## How we use this doc

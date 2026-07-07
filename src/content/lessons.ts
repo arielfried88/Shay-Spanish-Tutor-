@@ -10,11 +10,13 @@ export const LESSONS: Lesson[] = [
   { id: 'colors_1', topicId: 'colors', hebrewTitle: 'גלי את הצבעים!', difficulty: 1, gameType: 'flashcard_match', wordPool: ['color_rojo','color_azul','color_verde','color_amarillo','color_naranja','color_blanco'], xpReward: 20 },
   { id: 'colors_2', topicId: 'colors', hebrewTitle: 'איזה צבע זה?', difficulty: 1, gameType: 'multiple_choice', wordPool: ['color_rojo','color_azul','color_verde','color_amarillo','color_naranja','color_blanco','color_negro','color_rosa','color_morado','color_marron'], xpReward: 20 },
   { id: 'colors_3', topicId: 'colors', hebrewTitle: 'מסיון הצבע המסתורי', difficulty: 2, gameType: 'mystery_mission', wordPool: ['color_rojo','color_azul','color_verde','color_amarillo','color_naranja','color_rosa','color_morado'], xpReward: 35 },
+  { id: 'colors_4', topicId: 'colors', hebrewTitle: 'כתבי את הצבע!', difficulty: 2, gameType: 'fill_in_blank', wordPool: ['color_rojo','color_azul','color_verde','color_amarillo','color_blanco','color_negro','color_rosa'], xpReward: 35 },
 
   // NUMBERS
   { id: 'numbers_1', topicId: 'numbers', hebrewTitle: 'ספרי בספרדית!', difficulty: 1, gameType: 'flashcard_match', wordPool: ['num_uno','num_dos','num_tres','num_cuatro','num_cinco','num_seis'], xpReward: 20 },
   { id: 'numbers_2', topicId: 'numbers', hebrewTitle: 'כמה זה?', difficulty: 2, gameType: 'multiple_choice', wordPool: ['num_uno','num_dos','num_tres','num_cuatro','num_cinco','num_seis','num_siete','num_ocho','num_nueve','num_diez'], xpReward: 35 },
   { id: 'numbers_3', topicId: 'numbers', hebrewTitle: 'שמעי ובחרי', difficulty: 2, gameType: 'audio_riddle', wordPool: ['num_uno','num_dos','num_tres','num_cuatro','num_cinco','num_seis','num_siete','num_ocho','num_nueve','num_diez','num_once','num_doce'], xpReward: 35 },
+  { id: 'numbers_4', topicId: 'numbers', hebrewTitle: 'כתבי את המספר!', difficulty: 2, gameType: 'fill_in_blank', wordPool: ['num_uno','num_dos','num_tres','num_cuatro','num_cinco','num_seis','num_siete','num_ocho'], xpReward: 35 },
 
   // ANIMALS
   { id: 'animals_1', topicId: 'animals', hebrewTitle: 'פגשי את החיות!', difficulty: 1, gameType: 'word_image_match', wordPool: ['animal_perro','animal_gato','animal_pajaro','animal_pez','animal_caballo','animal_vaca','animal_leon','animal_elefante'], xpReward: 20 },
@@ -25,6 +27,7 @@ export const LESSONS: Lesson[] = [
   { id: 'body_1', topicId: 'body', hebrewTitle: 'חלקי הגוף', difficulty: 1, gameType: 'flashcard_match', wordPool: ['body_cabeza','body_ojo','body_nariz','body_boca','body_oreja','body_mano'], xpReward: 20 },
   { id: 'body_2', topicId: 'body', hebrewTitle: 'הצבעי על הגוף', difficulty: 2, gameType: 'word_image_match', wordPool: ['body_cabeza','body_ojo','body_nariz','body_boca','body_oreja','body_mano','body_pie','body_pelo'], xpReward: 35 },
   { id: 'body_3', topicId: 'body', hebrewTitle: 'שמעי איפה?', difficulty: 2, gameType: 'audio_riddle', wordPool: ['body_cabeza','body_ojo','body_nariz','body_boca','body_oreja','body_mano','body_pie','body_pelo','body_barriga','body_brazo'], xpReward: 35 },
+  { id: 'body_4', topicId: 'body', hebrewTitle: 'כתבי את חלק הגוף!', difficulty: 2, gameType: 'fill_in_blank', wordPool: ['body_cabeza','body_ojo','body_nariz','body_boca','body_oreja','body_mano','body_pie','body_pelo'], xpReward: 35 },
 
   // FOOD
   { id: 'food_1', topicId: 'food', hebrewTitle: 'מה טעים?', difficulty: 1, gameType: 'word_image_match', wordPool: ['food_manzana','food_platano','food_pan','food_leche','food_agua','food_pizza','food_helado','food_chocolate'], xpReward: 20 },
@@ -35,6 +38,7 @@ export const LESSONS: Lesson[] = [
   { id: 'family_1', topicId: 'family', hebrewTitle: 'המשפחה שלי', difficulty: 1, gameType: 'flashcard_match', wordPool: ['fam_mama','fam_papa','fam_hermana','fam_hermano','fam_abuela','fam_abuelo'], xpReward: 20 },
   { id: 'family_2', topicId: 'family', hebrewTitle: 'מי זה?', difficulty: 2, gameType: 'multiple_choice', wordPool: ['fam_mama','fam_papa','fam_hermana','fam_hermano','fam_abuela','fam_abuelo','fam_bebe','fam_familia'], xpReward: 35 },
   { id: 'family_3', topicId: 'family', hebrewTitle: 'שמעי מי מדבר', difficulty: 2, gameType: 'audio_riddle', wordPool: ['fam_mama','fam_papa','fam_hermana','fam_hermano','fam_abuela','fam_abuelo','fam_bebe','fam_familia'], xpReward: 35 },
+  { id: 'family_4', topicId: 'family', hebrewTitle: 'כתבי מי זו/זה!', difficulty: 2, gameType: 'fill_in_blank', wordPool: ['fam_mama','fam_papa','fam_hermana','fam_hermano','fam_abuela','fam_abuelo','fam_bebe'], xpReward: 35 },
 
   // SCHOOL
   { id: 'school_1', topicId: 'school', hebrewTitle: 'הכיתה שלנו', difficulty: 1, gameType: 'word_image_match', wordPool: ['school_lapiz','school_libro','school_mochila','school_mesa','school_silla','school_pizarra','school_papel','school_tijeras'], xpReward: 20 },
