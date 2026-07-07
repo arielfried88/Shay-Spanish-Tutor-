@@ -20,7 +20,7 @@ export const TOPICS: Topic[] = [
     bgGradient: 'from-yellow-300 to-orange-300',
     words: greetingsWords,
     unlockAfterXP: 0,
-    lessonIds: ['greetings_1', 'greetings_2', 'greetings_3'],
+    lessonIds: ['greetings_1', 'greetings_2', 'greetings_3', 'greetings_4'],
   },
   {
     id: 'colors',
@@ -53,7 +53,7 @@ export const TOPICS: Topic[] = [
     bgGradient: 'from-green-300 to-emerald-400',
     words: animalsWords,
     unlockAfterXP: 100,
-    lessonIds: ['animals_1', 'animals_2', 'animals_3'],
+    lessonIds: ['animals_1', 'animals_2', 'animals_3', 'animals_4'],
   },
   {
     id: 'body',
@@ -75,7 +75,7 @@ export const TOPICS: Topic[] = [
     bgGradient: 'from-red-300 to-orange-400',
     words: foodWords,
     unlockAfterXP: 250,
-    lessonIds: ['food_1', 'food_2', 'food_3'],
+    lessonIds: ['food_1', 'food_2', 'food_3', 'food_4'],
   },
   {
     id: 'family',
@@ -97,7 +97,7 @@ export const TOPICS: Topic[] = [
     bgGradient: 'from-amber-300 to-yellow-400',
     words: schoolWords,
     unlockAfterXP: 450,
-    lessonIds: ['school_1', 'school_2', 'school_3'],
+    lessonIds: ['school_1', 'school_2', 'school_3', 'school_4'],
   },
   {
     id: 'actions',
@@ -108,7 +108,7 @@ export const TOPICS: Topic[] = [
     bgGradient: 'from-lime-300 to-green-400',
     words: actionsWords,
     unlockAfterXP: 700,
-    lessonIds: ['actions_1', 'actions_2', 'actions_3'],
+    lessonIds: ['actions_1', 'actions_2', 'actions_3', 'actions_4'],
   },
   {
     id: 'sports',
@@ -119,7 +119,7 @@ export const TOPICS: Topic[] = [
     bgGradient: 'from-sky-300 to-blue-400',
     words: sportsWords,
     unlockAfterXP: 700,
-    lessonIds: ['sports_1', 'sports_2', 'sports_3'],
+    lessonIds: ['sports_1', 'sports_2', 'sports_3', 'sports_4'],
   },
 ]
 
