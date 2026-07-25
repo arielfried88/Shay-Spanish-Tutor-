@@ -40,6 +40,7 @@ export default function GameShell({ lesson }: Props) {
   const [newBadges, setNewBadges] = useState<string[]>([])
   const [shuffledWords, setShuffledWords] = useState<typeof words>([])
   const [completeFeedback, setCompleteFeedback] = useState('')
+  const [earnedXP, setEarnedXP] = useState(0)
 
   useEffect(() => {
     setShuffledWords([...words].sort(() => Math.random() - 0.5))
@@ -69,6 +70,7 @@ export default function GameShell({ lesson }: Props) {
       const { leveledUp: lu, newBadges: nb } = completeLesson(lesson.topicId, result)
       setLeveledUp(lu)
       setNewBadges(nb)
+      setEarnedXP(xp)
       setCompleteFeedback(getCompleteFeedback(stars))
       setDone(true)
     } else {
@@ -92,7 +94,7 @@ export default function GameShell({ lesson }: Props) {
             </div>
             <p className="text-2xl font-bold text-gray-700 mb-1">{score}%</p>
             <p className="text-gray-500 mb-2">{correctCount} נכונות מתוך {QUESTIONS}</p>
-            <p className="text-lg font-bold text-indigo-600 mb-4">+{calcXP(lesson.xpReward, stars, false)} XP</p>
+            <p className="text-lg font-bold text-indigo-600 mb-4">+{earnedXP} XP</p>
 
             {newBadges.length > 0 && (
               <div className="bg-yellow-50 rounded-2xl p-3 mb-4">
