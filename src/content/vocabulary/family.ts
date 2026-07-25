@@ -8,5 +8,5 @@ export const familyWords: VocabWord[] = [
   { id: 'fam_abuela',  spanish: 'abuela',  hebrew: 'סָבְתָּא',  emoji: '👵', audioHint: 'אַ-בּוּ-אֶלַה' },
   { id: 'fam_abuelo',  spanish: 'abuelo',  hebrew: 'סַבָּא',    emoji: '👴', audioHint: 'אַ-בּוּ-אֶלוֹ' },
   { id: 'fam_bebe',    spanish: 'bebé',    hebrew: 'תִּינוֹק',  emoji: '👶', audioHint: 'בֶּ-בֶה' },
-  { id: 'fam_familia', spanish: 'familia', hebrew: 'מִשְׁפָּחָה',emoji: '👨‍👩‍👧‍👦', audioHint: 'פַּ-מִי-לְיַה' },
+  { id: 'fam_familia', spanish: 'familia', hebrew: 'מִשְׁפָּחָה',emoji: '👨‍👩‍👧‍👦', audioHint: 'פַ-מִי-לְיַה' },
 ]
