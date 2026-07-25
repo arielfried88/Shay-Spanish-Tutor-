@@ -33,4 +33,18 @@ what it should return, and what it must not do.
 
 ## Agents defined here
 
-_(none yet — planned in the design session)_
+| Agent | Access | Model | Purpose |
+| --- | --- | --- | --- |
+| `content-integrity` | read-only | haiku | Referential integrity across the content data files — word IDs, lesson wiring, riddle coverage. |
+| `language-reviewer` | read-only | opus | Spanish and Hebrew quality: accents, translation, niqqud, pronunciation hints, feminine grammar. |
+| `topic-author` | **writes** | opus | Creates a whole new topic — vocabulary, riddles, lessons, and all wiring. |
+| `kid-ux-reviewer` | read-only | sonnet | The interface as a seven-year-old on a tablet experiences it. |
+| `code-reviewer` | read-only | opus | This project's own invariants — XP math, persistence, client boundaries, game contract. |
+
+Only `topic-author` can write files. Everything else reports, and the main
+agent applies the fixes — deliberate, because a confidently wrong "fix" to
+Hebrew vocalization or Spanish accents is worse than no fix.
+
+`code-reviewer` is intentionally narrow. Generic code-quality review is the
+built-in `/code-review` skill; this agent only covers what is specific to
+this app.
